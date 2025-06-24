@@ -7,23 +7,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
  <style>
+
     :root {
-      --merah: #d32f2f;
-      --merah-gelap: #b71c1c;
-      --putih: #ffffff;
-      --abu: #f9f9f9;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --merah: #D32F2F;
+      --merah-gelap: #B71C1C;
+      --merah-muda: #FFCDD2;
+      --putih: #FFFFFF;
+      --abu: #F5F5F5;
+      --abu-gelap: #424242;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html { 
+      scroll-behavior: smooth; 
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--abu);
-      color: #333;
+      color: var(--abu-gelap);
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+    
+    /* Header Styles */
     header {
       background: var(--merah);
       padding: 15px 25px;
@@ -31,170 +47,397 @@
       align-items: center;
       justify-content: space-between;
       color: var(--putih);
-      box-shadow: 0 2px 6px var(--shadow);
+      box-shadow: var(--shadow);
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: var(--transition);
     }
+    
     .logo-container {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .logo-container img { height: 40px; border-radius: 50%; background: white; padding: 2px; }
+    
+    .logo-container img { 
+      height: 40px; 
+      border-radius: 50%; 
+      background: white; 
+      padding: 2px;
+      object-fit: contain;
+    }
+    
     header h1 {
       font-size: 1.2rem;
+      font-weight: 600;
       flex-grow: 1;
       text-align: center;
     }
+    
     #hamburger {
       cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 20px;
+      width: 25px;
     }
+    
     #hamburger span {
       height: 3px;
-      width: 25px;
+      width: 100%;
       background: white;
-      transition: all 0.4s;
+      transition: var(--transition);
+      border-radius: 3px;
     }
+    
+    #hamburger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    #hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    #hamburger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Navigation */
     nav {
       position: fixed;
-      top: 65px;
+      top: 70px;
       right: -250px;
       width: 220px;
       background: var(--merah-gelap);
-      height: calc(100% - 65px);
-      padding-top: 20px;
+      height: calc(100vh - 70px);
+      padding: 20px 0;
       display: flex;
       flex-direction: column;
       transition: right 0.3s ease;
       z-index: 999;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     }
-    nav.open { right: 0; }
+    
+    nav.open { 
+      right: 0; 
+    }
+    
     nav a {
-      padding: 15px 25px;
+      padding: 12px 25px;
       text-decoration: none;
       color: white;
       font-weight: 500;
-      transition: background 0.3s;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    
+    nav a i {
+      font-size: 1.2rem;
+    }
+    
     nav a:hover, nav a.active {
       background: rgba(255, 255, 255, 0.15);
     }
+    
     #credit {
       margin-top: auto;
-      padding: 10px;
-      font-size: 12px;
+      padding: 15px;
+      font-size: 0.7rem;
       text-align: center;
-      color: #ccc;
+      color: rgba(255,255,255,0.7);
     }
+    
+    /* Main Content */
     main {
       padding: 20px;
       flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
     }
+    
     section {
       display: none;
       animation: fade 0.5s ease;
+      padding: 20px 0;
     }
-    section.active { display: block; }
+    
+    section.active { 
+      display: block; 
+    }
+    
     @keyframes fade {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     h2 {
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       color: var(--merah-gelap);
+      font-size: 1.8rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--merah);
+      border-radius: 3px;
+    }
+    
+    h3 {
+      margin: 20px 0 10px;
+      color: var(--merah);
       font-size: 1.4rem;
     }
+    
+    /* Card Grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
     }
+    
     .card {
-      background: white;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-    .card i {
-      font-size: 2.2rem;
-      color: var(--merah);
-      margin-bottom: 10px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-top: 15px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px var(--shadow);
-      transition: transform 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    form {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 3px 10px var(--shadow);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    input, textarea {
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card i {
+      font-size: 2.5rem;
+      color: var(--merah);
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .card strong {
+      font-weight: 600;
+      color: var(--merah-gelap);
+    }
+    
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+    
+    .gallery img {
       width: 100%;
-      padding: 10px;
-      margin-top: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
     }
+    
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+    
+    /* Form Styles */
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: var(--shadow);
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 500;
+      color: var(--abu-gelap);
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--merah);
+      box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+    }
+    
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
     button {
       margin-top: 20px;
-      padding: 12px;
+      padding: 14px;
       width: 100%;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       background: var(--merah);
       color: white;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: var(--transition);
     }
-    button:hover { background: var(--merah-gelap); }
+    
+    button:hover { 
+      background: var(--merah-gelap); 
+      transform: translateY(-2px);
+    }
+    
+    /* List Styles */
+    ul {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    /* Footer */
     footer {
-      height: 30px;
-      background: #ccc;
-      color: #333;
-      font-size: 12px;
+      background: var(--merah-gelap);
+      color: white;
       text-align: center;
-      line-height: 30px;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 40px;
     }
+    
+    /* Sub Sections */
+    #sub-kegiatan, #sub-divisi {
+      padding: 30px 0;
+    }
+    
+    #sub-kegiatan h2, #sub-divisi h2 {
+      color: var(--merah-gelap);
+      margin-bottom: 15px;
+    }
+    
+    #sub-kegiatan p, #sub-divisi p {
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+    
+    #sub-kegiatan a, #sub-divisi a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--merah);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    #sub-kegiatan a:hover, #sub-divisi a:hover {
+      color: var(--merah-gelap);
+    }
+    
+    /* Checkbox */
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+    
+    /* Notification */
+    #notif {
+      display: none;
+      color: #388E3C;
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px;
+      background: #E8F5E9;
+      border-radius: 5px;
+    }
+    
+    /* Responsive */
     @media (min-width: 768px) {
-      #hamburger { display: none; }
+      #hamburger { 
+        display: none; 
+      }
+      
       nav {
         position: static;
         height: auto;
         flex-direction: row;
         justify-content: center;
         right: 0 !important;
-        background: var(--merah-gelap);
+        background: transparent;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
       }
-      nav a { padding: 10px 20px; }
-      #credit { display: none; }
+      
+      nav a { 
+        padding: 10px 20px; 
+      }
+      
+      #credit { 
+        display: none; 
+      }
+      
+      header h1 {
+        font-size: 1.4rem;
+      }
+      
+      main {
+        padding: 30px;
+      }
+      
+      section {
+        padding: 30px 0;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+    
+    @media (min-width: 992px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
     }
   </style>
 </head>
@@ -273,161 +516,4 @@
         <div class="card" onclick="bukaKegiatan('Bakti Sosial', 'Bakti Sosial adalah kegiatan kemanusiaan yang dilakukan untuk membantu masyarakat sekitar, seperti membagikan bantuan, membersihkan lingkungan, dan memberikan pelayanan sosial. Selain membantu, kegiatan ini juga mempererat persahabatan dan rasa kepedulian antar anggota dan warga sekitar.')"><i class="ph ph-house-line"></i> Bakti Sosial</div>
         <div class="card" onclick="bukaKegiatan('Simulasi Bencana', 'Simulasi bencana adalah pelatihan yang bertujuan melatih anggota PMR untuk tanggap dan siap menghadapi berbagai jenis bencana, seperti gempa, banjir, atau kebakaran. Kegiatan ini meliputi latihan evakuasi, pertolongan pertama, dan koordinasi tim agar saat terjadi bencana, anggota dapat bertindak cepat dan tepat demi keselamatan bersama.')"><i class="ph ph-medal"></i> Simulasi Bencana</div>
       </div>
-    </section>
-    <section id="sub-kegiatan" style="display:none">
-      <h2 id="sub-kegiatan-judul"></h2>
-      <p id="sub-kegiatan-deskripsi"></p>
-      <a href="#" onclick="kembaliKeKegiatan()">← Kembali ke Kegiatan</a>
-    </section><section id="divisi">
-  <h2>Divisi PMR</h2>
-  <div class="card-grid">
-    <div class="card" onclick="bukaDivisi('Kesehatan dan kemanusiaan', 'Divisi Kesehatan dan Kemanusiaan bertugas menangani kesehatan, aksi sosial, dan tanggap darurat.')">
-      <i class="ph ph-heartbeat"></i><strong> Kesehatan dan kemanusiaan</strong>
-    </div>
-    <div class="card" onclick="bukaDivisi('Inventaris', 'divisi ini bertugas Mengelola perlengkapan, logistik, dan peralatan PMR.')">
-      <i class="ph ph-archive-box"></i><strong> Inventaris</strong>
-    </div>
-    <div class="card" onclick="bukaDivisi('persahabatan', 'Menjalin keakraban antar anggota dan membangun kerja sama yang solid.')">
-      <i class="ph ph-handshake"></i><strong>  persahabatan</strong>
-    </div>
-    <div class="card" onclick="bukaDivisi('PDD', 'nah kami di sini bertugas untuk Publikasi, desain dan dokumentasi dari setiap kegiatan di PMR 039 SMAN 6 Medan.')">
-      <i class="ph ph-camera"></i><strong> PDD(Publikasi, Desain, dan Dokumentasi)</strong>
-    </div>
-  </div>
-</section>
-    <section id="sub-divisi" style="display:none">
-      <h2 id="sub-divisi-judul"></h2>
-      <p id="sub-divisi-deskripsi"></p>
-      <a href="#" onclick="kembaliKeDivisi()">← Kembali ke Divisi</a>
-    </section>
-    <section id="galeri">
-      <h2>Galeri Kegiatan</h2>
-      <div class="gallery">
-        <img src="1748782531352.jpg" alt="tanbahan">
-        <img src="1748782531359.jpg" alt="tanbahan">
-        <img src="1748676202503.jpg" alt="Kegiatan 1">
-        <img src="1748676173115.jpg" alt="Kegiatan 2">
-        <img src="1748782531470.jpg" alt="Kegiatan 2">
-        <img src="1748782531464.jpg" alt="Kegiatan 2">
-        <img src="1748782531452.jpg" alt="Kegiatan 2">
-        <img src="1748782531444.jpg" alt="Kegiatan 2">
-        <img src="1748676350726.jpg" alt="Kegiatan 3">
-        <img src="1748782531398.jpg" alt="Kegiatan 3">
-        <img src="1748676173119.jpg" alt="Kegiatan 4">
-        <img src="1748676173110.jpg" alt="Kegiatan 5">
-        <img src="1748676173105.jpg" alt="Kegiatan 6">
-        <img src="1748676173097.jpg" alt="Kegiatan 7">
-        <img src="1748782531411.jpg" alt="Kegiatan 7">
-        <img src="1748782531417.jpg" alt="Kegiatan 7">
-        <img src="1748782531365.jpg" alt="Kegiatan 10">
-        <img src="1748782531372.jpg" alt="Kegiatan 10">
-        <img src="1748782531383.jpg" alt="Kegiatan 10">
-        <img src="1748782531391.jpg" alt="Kegiatan 10">
-        <img src="1748676173101.jpg" alt="Kegiatan 8">
-        <img src="1748782531406.jpg" alt="Kegiatan 3">
-        <img src="1748782531324.jpg" alt="Kegiatan 3">
-        <img src="1748782531334.jpg" alt="Kegiatan 3">
-        <img src="1748782531340.jpg" alt="Kegiatan 3">
-        <img src="1748782531346.jpg" alt="Kegiatan 3">
-      </div>
-    </section>
-    <section id="daftar">
-  <h2>Formulir Pendaftaran</h2>
-  <h3>kuy daftar ke PMR 039 guys</h3>
-  <form action="https://formsubmit.co/PMR039unitpdd@gmail.com" method="POST">
-   <label>Masukkan Nama :</label>
-    <input type="text" name="nama" placeholder="Nama Lengkap" required>
-    <label>kelas :</label>
-    <input type="text" name="kelas" placeholder="Kelas" required>
-    <label>nomor hp aktif :</label>
-    <input type="tel" name="hp" placeholder="Nomor HP yang Aktif" required>
-    <label for="photo">Upload Foto Diri:</label>
-  <input type="file" id="photo" name="photo" accept="image/*">
-    <textarea name="alasan" placeholder="Alasan Bergabung" rows="3" required></textarea>
-        <p1>contact person</p1><br>
-    <p2>•082118889838 mimin bilqis</p2><br>
-    <h3>Persetujuan Orang Tua / Wali</h3>
-  <label>
-    <input type="checkbox" name="izin_wali" required> Saya sebagai orang tua/wali menyetujui bahwa anak saya mengikuti kegiatan ini.
-  </label><br><br> 
-    <button type="submit">Daftar</button>
-    <p id="notif" style="display:none;color:green;text-align:center;margin-top:10px;">Pendaftaran berhasil! Cek email kamu 😊</p>
-  </form>
-</section>
-  </main>
-  <footer>&copy; 2025 PMR 039 SMA Negeri 6 Medan </footer>
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navbar = document.getElementById('navbar');
-    const links = navbar.querySelectorAll('a');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navbar.classList.toggle('open');
-    });
-
-    links.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
-        document.getElementById('sub-kegiatan').style.display = 'none';
-        document.getElementById('sub-divisi').style.display = 'none';
-        const target = document.getElementById(link.getAttribute('href').substring(1));
-        target.classList.add('active');
-        if (window.innerWidth < 768) {
-          navbar.classList.remove('open');
-          hamburger.classList.remove('open');
-        }
-      });
-    });
-document.getElementById('formPMR').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById('notif').style.display = 'block';
-        form.reset();
-      } else {
-        alert("Terjadi kesalahan saat mengirim formulir.");
-      }
-    })
-    .catch(error => {
-      alert("Gagal mengirim. Periksa koneksi atau coba lagi.");
-      console.error(error);
-    });
-  });
-    
-    function bukaKegiatan(judul, deskripsi) {
-      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById('sub-kegiatan').style.display = 'block';
-      document.getElementById('sub-kegiatan-judul').innerText = judul;
-      document.getElementById('sub-kegiatan-deskripsi').innerText = deskripsi;
-    }
-
-    function kembaliKeKegiatan() {
-      document.getElementById('sub-kegiatan').style.display = 'none';
-      document.getElementById('kegiatan').classList.add('active');
-    }
-
-    function bukaDivisi(judul, deskripsi) {
-      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById('sub-divisi').style.display = 'block';
-      document.getElementById('sub-divisi-judul').innerText = judul;
-      document.getElementById('sub-divisi-deskripsi').innerText = deskripsi;
-    }
-
-    function kembaliKeDivisi() {
-      document.getElementById('sub-divisi').style.display = 'none';
-      document.getElementById('divisi').classList.add('active');
-    }
-  </script>
-</body>
-</html>
+    </se
