@@ -516,4 +516,163 @@
         <div class="card" onclick="bukaKegiatan('Bakti Sosial', 'Bakti Sosial adalah kegiatan kemanusiaan yang dilakukan untuk membantu masyarakat sekitar, seperti membagikan bantuan, membersihkan lingkungan, dan memberikan pelayanan sosial. Selain membantu, kegiatan ini juga mempererat persahabatan dan rasa kepedulian antar anggota dan warga sekitar.')"><i class="ph ph-house-line"></i> Bakti Sosial</div>
         <div class="card" onclick="bukaKegiatan('Simulasi Bencana', 'Simulasi bencana adalah pelatihan yang bertujuan melatih anggota PMR untuk tanggap dan siap menghadapi berbagai jenis bencana, seperti gempa, banjir, atau kebakaran. Kegiatan ini meliputi latihan evakuasi, pertolongan pertama, dan koordinasi tim agar saat terjadi bencana, anggota dapat bertindak cepat dan tepat demi keselamatan bersama.')"><i class="ph ph-medal"></i> Simulasi Bencana</div>
       </div>
-    </se
+    </section>
+    <section id="sub-kegiatan" style="display:none">
+      <h2 id="sub-kegiatan-judul"></h2>
+      <p id="sub-kegiatan-deskripsi"></p>
+      <a href="#" onclick="kembaliKeKegiatan()">← Kembali ke Kegiatan</a>
+    </section><section id="divisi">
+  <h2>Divisi PMR</h2>
+  <div class="card-grid">
+    <div class="card" onclick="bukaDivisi('Kesehatan dan kemanusiaan', 'Divisi Kesehatan dan Kemanusiaan bertugas menangani kesehatan, aksi sosial, dan tanggap darurat.')">
+      <i class="ph ph-heartbeat"></i><strong> Kesehatan dan kemanusiaan</strong>
+    </div>
+    <div class="card" onclick="bukaDivisi('Inventaris', 'divisi ini bertugas Mengelola perlengkapan, logistik, dan peralatan PMR.')">
+      <i class="ph ph-archive-box"></i><strong> Inventaris</strong>
+    </div>
+    <div class="card" onclick="bukaDivisi('persahabatan', 'Menjalin keakraban antar anggota dan membangun kerja sama yang solid.')">
+      <i class="ph ph-handshake"></i><strong>  persahabatan</strong>
+    </div>
+    <div class="card" onclick="bukaDivisi('PDD', 'nah kami di sini bertugas untuk Publikasi, desain dan dokumentasi dari setiap kegiatan di PMR 039 SMAN 6 Medan.')">
+      <i class="ph ph-camera"></i><strong> PDD(Publikasi, Desain, dan Dokumentasi)</strong>
+    </div>
+  </div>
+</section>
+    <section id="sub-divisi" style="display:none">
+      <h2 id="sub-divisi-judul"></h2>
+      <p id="sub-divisi-deskripsi"></p>
+      <a href="#" onclick="kembaliKeDivisi()">← Kembali ke Divisi</a>
+    </section>
+    <section id="galeri">
+      <h2>Galeri Kegiatan</h2>
+      <div class="gallery">
+        <img src="1748782531352.jpg" alt="tanbahan">
+        <img src="1748782531359.jpg" alt="tanbahan">
+        <img src="1748676202503.jpg" alt="Kegiatan 1">
+        <img src="1748676173115.jpg" alt="Kegiatan 2">
+        <img src="1748782531470.jpg" alt="Kegiatan 2">
+        <img src="1748782531464.jpg" alt="Kegiatan 2">
+        <img src="1748782531452.jpg" alt="Kegiatan 2">
+        <img src="1748782531444.jpg" alt="Kegiatan 2">
+        <img src="1748676350726.jpg" alt="Kegiatan 3">
+        <img src="1748782531398.jpg" alt="Kegiatan 3">
+        <img src="1748676173119.jpg" alt="Kegiatan 4">
+        <img src="1748676173110.jpg" alt="Kegiatan 5">
+        <img src="1748676173105.jpg" alt="Kegiatan 6">
+        <img src="1748676173097.jpg" alt="Kegiatan 7">
+        <img src="1748782531411.jpg" alt="Kegiatan 7">
+        <img src="1748782531417.jpg" alt="Kegiatan 7">
+        <img src="1748782531365.jpg" alt="Kegiatan 10">
+        <img src="1748782531372.jpg" alt="Kegiatan 10">
+        <img src="1748782531383.jpg" alt="Kegiatan 10">
+        <img src="1748782531391.jpg" alt="Kegiatan 10">
+        <img src="1748676173101.jpg" alt="Kegiatan 8">
+        <img src="1748782531406.jpg" alt="Kegiatan 3">
+        <img src="1748782531324.jpg" alt="Kegiatan 3">
+        <img src="1748782531334.jpg" alt="Kegiatan 3">
+        <img src="1748782531340.jpg" alt="Kegiatan 3">
+        <img src="1748782531346.jpg" alt="Kegiatan 3">
+      </div>
+    </section>
+    <section id="daftar">
+  <h2>Formulir Pendaftaran</h2>
+  <h3>kuy daftar ke PMR 039 guys</h3>
+  <form action="https://formsubmit.co/PMR039unitpdd@gmail.com" method="POST">
+   <label>Masukkan Nama :</label>
+    <input type="text" name="nama" placeholder="Nama Lengkap" required>
+    <label>kelas :</label>
+    <input type="text" name="kelas" placeholder="Kelas" required>
+    <label>nomor hp aktif :</label>
+    <input type="tel" name="hp" placeholder="Nomor HP yang Aktif" required>
+    <label for="photo">Upload Foto Diri:</label>
+  <input type="file" id="photo" name="photo" accept="image/*">
+    <textarea name="alasan" placeholder="Alasan Bergabung" rows="3" required></textarea>
+    <h3>Persetujuan Orang Tua / Wali</h3>
+  <label>
+    <input type="checkbox" name="izin_wali" required> Saya sebagai orang tua/wali menyetujui bahwa anak saya mengikuti kegiatan ini.
+  </label><br><br> 
+    <button type="submit">Daftar</button>
+    <p id="notif" style="display:none;color:green;text-align:center;margin-top:10px;">Pendaftaran berhasil! Cek email kamu 😊</p>
+    <h1>have question??</h1>
+    <h1>contact us!</h1>
+            <a href="https://wa.me/6281375191097">chat me!</a> <br>
+        <a href="https://www.instagram.com/pmr039_smansix?igsh=eDJpajZpNTA3YTA2">klick to Follow instagram!</a>
+  </form>
+</section>
+  </main>
+  <footer>&copy; 2025 PMR 039 SMA Negeri 6 Medan </footer>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    const links = navbar.querySelectorAll('a');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navbar.classList.toggle('open');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById('sub-kegiatan').style.display = 'none';
+        document.getElementById('sub-divisi').style.display = 'none';
+        const target = document.getElementById(link.getAttribute('href').substring(1));
+        target.classList.add('active');
+        if (window.innerWidth < 768) {
+          navbar.classList.remove('open');
+          hamburger.classList.remove('open');
+        }
+      });
+    });
+document.getElementById('formPMR').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('notif').style.display = 'block';
+        form.reset();
+      } else {
+        alert("Terjadi kesalahan saat mengirim formulir.");
+      }
+    })
+    .catch(error => {
+      alert("Gagal mengirim. Periksa koneksi atau coba lagi.");
+      console.error(error);
+    });
+  });
+    
+    function bukaKegiatan(judul, deskripsi) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('sub-kegiatan').style.display = 'block';
+      document.getElementById('sub-kegiatan-judul').innerText = judul;
+      document.getElementById('sub-kegiatan-deskripsi').innerText = deskripsi;
+    }
+
+    function kembaliKeKegiatan() {
+      document.getElementById('sub-kegiatan').style.display = 'none';
+      document.getElementById('kegiatan').classList.add('active');
+    }
+
+    function bukaDivisi(judul, deskripsi) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('sub-divisi').style.display = 'block';
+      document.getElementById('sub-divisi-judul').innerText = judul;
+      document.getElementById('sub-divisi-deskripsi').innerText = deskripsi;
+    }
+
+    function kembaliKeDivisi() {
+      document.getElementById('sub-divisi').style.display = 'none';
+      document.getElementById('divisi').classList.add('active');
+    }
+  </script>
+</body>
+</html>
